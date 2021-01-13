@@ -1,6 +1,7 @@
 package org.eqasim.core.scenario.routing;
 
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Set;
 
 import org.matsim.api.core.v01.population.Leg;
@@ -52,7 +53,7 @@ public class PlanRouter {
 					Facility fromFacility = FacilitiesUtils.toFacility(trip.getOriginActivity(), facilities);
 					Facility toFacility = FacilitiesUtils.toFacility(trip.getDestinationActivity(), facilities);
 
-					List<? extends PlanElement> newElements = new List<>();
+					List<? extends PlanElement> newElements = new LinkedList<>();
 					try {
 						newElements = tripRouter.calcRoute(mainMode, fromFacility, toFacility,
 							departureTime.seconds(), plan.getPerson());
