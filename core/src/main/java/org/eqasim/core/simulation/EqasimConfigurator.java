@@ -41,8 +41,8 @@ public class EqasimConfigurator {
 				new SwissRailRaptorModule(), //
 				new EqasimTransitModule(), //
 				new DiscreteModeChoiceModule(), //
-				new EqasimComponentsModule(), //
-				new RoadPricingModule() //
+				new EqasimComponentsModule()//, //
+				//new RoadPricingModule() //
 		);
 	}
 

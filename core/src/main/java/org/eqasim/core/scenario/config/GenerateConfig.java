@@ -18,6 +18,7 @@ import org.matsim.contribs.discrete_mode_choice.modules.config.DiscreteModeChoic
 import org.matsim.core.config.CommandLine;
 import org.matsim.core.config.CommandLine.ConfigurationException;
 import org.matsim.core.config.Config;
+import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.groups.ControlerConfigGroup.RoutingAlgorithmType;
 import org.matsim.core.config.groups.PlanCalcScoreConfigGroup;
 import org.matsim.core.config.groups.PlanCalcScoreConfigGroup.ActivityParams;
@@ -81,7 +82,8 @@ public class GenerateConfig {
 		eqasimConfig.setTripAnalysisInterval(DEFAULT_ITERATIONS);
 
 		// Road pricing
-		RoadPricingConfigGroup roadPricingConfig = (RoadPricingConfigGroup) config.getModules().get(RoadPricingConfigGroup.GROUP_NAME);
+		//RoadPricingConfigGroup roadPricingConfig = (RoadPricingConfigGroup) config.getModules().get(RoadPricingConfigGroup.GROUP_NAME);
+		RoadPricingConfigGroup roadPricingConfig = ConfigUtils.addOrGetModule(config, RoadPricingConfigGroup.class);
 		roadPricingConfig.setTollLinksFile(prefix + "toll.xml");
 
 		// Scoring config
