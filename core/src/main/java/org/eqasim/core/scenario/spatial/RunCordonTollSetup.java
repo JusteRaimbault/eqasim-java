@@ -36,7 +36,8 @@ public class RunCordonTollSetup {
 		String shapeAttribute = cmd.getOptionStrict("shape-attribute");
 		String shapeValue = cmd.getOptionStrict("shape-value");
 		URL shapeUrl = new File(cmd.getOptionStrict("shape-path")).toURI().toURL();
-		double price = Double.parseDouble(cmd.getOptionStrict("price"));
+		//double price = Double.parseDouble(cmd.getOptionStrict("price"));
+		String price = cmd.getOptionStrict("price");
 
 		Polygon polygon = SpatialUtils.loadPolygon(shapeUrl, shapeAttribute, shapeValue);
 
@@ -65,7 +66,7 @@ public class RunCordonTollSetup {
 		return(res);
 	}
 
-	static private void writeTollFile(List<Link> links, String path, double price) throws IOException {
+	static private void writeTollFile(List<Link> links, String path, String price) throws IOException {
 
 		 String header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE roadpricing SYSTEM \"http://www.matsim.org/files/dtd/roadpricing_v1.dtd\">\n"+
 		 									"<roadpricing type=\"link\" name=\"cordon toll\">\n";
@@ -80,9 +81,9 @@ public class RunCordonTollSetup {
 			 	xml.write("<link id=\""+link.getId()+"\" />\n");
 		 }
 
-		 xml.write("</links>\n\n");
+		 xml.write("</links>\n");
 
-		 xml.write("<cost start_time=\"00:00\" end_time=\"23:59\" amount=\""+price+"\"/>");
+		 xml.write("<cost start_time=\"00:00\" end_time=\"23:59\" amount=\""+price+"\"/>\n");
 
      xml.write(footer);
      xml.close();

@@ -7,6 +7,7 @@ import java.util.List;
 import org.eqasim.core.components.config.EqasimConfigGroup;
 import org.eqasim.core.simulation.mode_choice.EqasimModeChoiceModule;
 import org.matsim.api.core.v01.TransportMode;
+import org.matsim.contrib.roadpricing.RoadPricingConfigGroup;
 import org.matsim.contribs.discrete_mode_choice.modules.ConstraintModule;
 import org.matsim.contribs.discrete_mode_choice.modules.DiscreteModeChoiceConfigurator;
 import org.matsim.contribs.discrete_mode_choice.modules.EstimatorModule;
@@ -78,6 +79,10 @@ public class GenerateConfig {
 		eqasimConfig.setCrossingPenalty(3.0);
 		eqasimConfig.setSampleSize(sampleSize);
 		eqasimConfig.setTripAnalysisInterval(DEFAULT_ITERATIONS);
+
+		// Road pricing
+		RoadPricingConfigGroup roadPricingConfig = (RoadPricingConfigGroup) config.getModules().get(RoadPricingConfigGroup.GROUP_NAME);
+		roadPricingConfig.setTollLinksFile(prefix + "toll.xml");
 
 		// Scoring config
 		PlanCalcScoreConfigGroup scoringConfig = config.planCalcScore();

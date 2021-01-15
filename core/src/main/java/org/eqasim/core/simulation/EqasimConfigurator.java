@@ -14,6 +14,8 @@ import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.contribs.discrete_mode_choice.modules.DiscreteModeChoiceModule;
 import org.matsim.contribs.discrete_mode_choice.modules.config.DiscreteModeChoiceConfigGroup;
+import org.matsim.contrib.roadpricing.RoadPricingConfigGroup;
+import org.matsim.contrib.roadpricing.RoadPricingModule;
 import org.matsim.core.config.ConfigGroup;
 import org.matsim.core.controler.AbstractModule;
 import org.matsim.core.controler.Controler;
@@ -29,7 +31,9 @@ public class EqasimConfigurator {
 				new SwissRailRaptorConfigGroup(), //
 				new EqasimConfigGroup(), //
 				new DiscreteModeChoiceConfigGroup(), //
-				new CalibrationConfigGroup() };
+				new CalibrationConfigGroup(),
+				new RoadPricingConfigGroup()
+		};
 	}
 
 	static public List<AbstractModule> getModules() {
@@ -37,7 +41,8 @@ public class EqasimConfigurator {
 				new SwissRailRaptorModule(), //
 				new EqasimTransitModule(), //
 				new DiscreteModeChoiceModule(), //
-				new EqasimComponentsModule() //
+				new EqasimComponentsModule(), //
+				new RoadPricingModule() //
 		);
 	}
 
