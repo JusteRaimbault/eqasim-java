@@ -57,7 +57,8 @@ public class RunCordonTollSetup {
 		for (Link link : network.getLinks().values()) {
 			Point point = factory.createPoint(new Coordinate(link.getCoord().getX(), link.getCoord().getY()));
 
-			if (polygon.contains(point)) {
+			// toll only on car links
+			if (link.getAllowedModes().contains("car")&&polygon.contains(point)) {
 				res.add(link);
 			}
 		}
